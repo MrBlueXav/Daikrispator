@@ -1,9 +1,13 @@
 # Description
-Experimental music synthesizer or autonomous noise box.
+This is an adaptation of Dekrispator experimental autonomous music synthesizer.
+
+It runs on Electro-smith Daisy pod platform.
 
 The synth works on its own, sounds are perpetually changing.
 
-If you press switch 1, sounds and effects stop always changing and the LED1 goes white : the synth parameters are frozen. Press once again switch1 and LED1 lights off : unfreeze.
+No USB Host midi but some controls.
+
+Switch 1: press and sounds and effects will stop always changing and the LED1 goes white : the synth parameters are frozen. Press once again switch1 and LED1 lights off : unfreeze.
 
 Switch2 is for mute.
 
@@ -11,7 +15,7 @@ Knob1 controls tempo.
 
 Knob2 controls FX : first no fx then just delay then delay + phaser and finally delay + phaser + chorus. (on/off control)
 
-**Dekrispator features** :
+**Daikrispator features** :
 
  * monophonic
  * all digital !

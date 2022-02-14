@@ -27,7 +27,12 @@
 #include "soundGen.h"
 #include "MIDI_application.h"
 
+using namespace daisy;
+using namespace daisysp;
+
 /*-------------------------------------------------------*/
+
+extern float sample_rate;
 
 extern bool demoMode;
 extern bool freeze;
@@ -41,9 +46,13 @@ extern Oscillator_t op2;
 extern Oscillator_t op3;
 extern Oscillator_t op4;
 
-extern VCO_blepsaw_t  mbSawOsc;
-extern VCO_bleprect_t mbRectOsc;
-extern VCO_bleptri_t  mbTriOsc;
+//extern VCO_blepsaw_t  mbSawOsc;
+//extern VCO_bleprect_t mbRectOsc;
+//extern VCO_bleptri_t  mbTriOsc;
+
+extern Oscillator mbSawOsc;
+extern Oscillator mbRectOsc;
+extern Oscillator mbTriOsc;
 
 extern Oscillator_t vibr_lfo;
 extern Oscillator_t filt_lfo;
@@ -204,9 +213,9 @@ void SynthOut_switch(uint8_t val)
             op1.amp       = op1.last_amp;
             op2.amp       = op2.last_amp;
             op3.amp       = op3.last_amp;
-            mbSawOsc.amp  = mbSawOsc.last_amp;
-            mbRectOsc.amp = mbRectOsc.last_amp;
-            mbTriOsc.amp  = mbTriOsc.last_amp;
+            //mbSawOsc.amp  = mbSawOsc.last_amp;
+            //mbRectOsc.amp = mbRectOsc.last_amp;
+           // mbTriOsc.amp  = mbTriOsc.last_amp;
             break;
 
         case 0:
@@ -216,12 +225,12 @@ void SynthOut_switch(uint8_t val)
             op2.amp            = 0;
             op3.last_amp       = op3.amp;
             op3.amp            = 0;
-            mbSawOsc.last_amp  = mbSawOsc.amp;
-            mbSawOsc.amp       = 0;
-            mbRectOsc.last_amp = mbRectOsc.amp;
-            mbRectOsc.amp      = 0;
-            mbTriOsc.last_amp  = mbTriOsc.amp;
-            mbTriOsc.amp       = 0;
+            //mbSawOsc.last_amp  = mbSawOsc.amp;
+            //mbSawOsc.amp       = 0;
+            //mbRectOsc.last_amp = mbRectOsc.amp;
+            //mbRectOsc.amp      = 0;
+            //mbTriOsc.last_amp  = mbTriOsc.amp;
+            //mbTriOsc.amp       = 0;
             break;
     }
 }
@@ -248,9 +257,9 @@ void SynthOut_amp_set(uint8_t val)
     op1.amp       = amp;
     op2.amp       = amp;
     op3.amp       = amp;
-    mbSawOsc.amp  = amp;
-    mbRectOsc.amp = amp;
-    mbTriOsc.amp  = amp;
+    mbSawOsc.SetAmp(amp);
+    mbRectOsc.SetAmp(amp);
+    mbTriOsc.SetAmp(amp);
 }
 /*-------------------------------------------------------*/
 void Delay_toggle(void)
@@ -469,9 +478,18 @@ void Synth_Init(void)
     osc_init(&filt2_lfo, 0, 0);
     osc_init(&amp_lfo, 0, 0);
     AdditiveGen_newWaveform();
-    VCO_blepsaw_Init(&mbSawOsc);
-    VCO_bleprect_Init(&mbRectOsc);
-    VCO_bleptri_Init(&mbTriOsc);
+    //VCO_blepsaw_Init(&mbSawOsc);
+    //VCO_bleprect_Init(&mbRectOsc);
+    //VCO_bleptri_Init(&mbTriOsc);
+    mbSawOsc.Init(sample_rate);
+    mbSawOsc.SetAmp(1.f);
+    mbSawOsc.SetWaveform(Oscillator::WAVE_POLYBLEP_SAW);
+    mbRectOsc.Init(sample_rate);
+    mbRectOsc.SetAmp(1.f);
+    mbRectOsc.SetWaveform(Oscillator::WAVE_POLYBLEP_SQUARE);
+    mbTriOsc.Init(sample_rate);
+    mbTriOsc.SetAmp(1.f);
+    mbTriOsc.SetWaveform(Oscillator::WAVE_POLYBLEP_TRI);
 }
 /*---------------------------------------------------------------------------------------*/
 

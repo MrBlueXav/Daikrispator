@@ -25,7 +25,10 @@
 #include "sinetable.h"
 #include "notesTables.h"
 #include "drifter.h"
-#include "blepvco.h"
+//#include "blepvco.h"
+
+#include "daisy_pod.h"
+#include "daisysp.h"
 /*----------------------------------------------------------------------------*/
 
 enum timbre { MORPH_SAW = 0, SPLIT, ACC_SINE, WT_SINE, ADDITIVE, POWER_SINE, BLEPTRIANGLE, BLEPSQUARE,

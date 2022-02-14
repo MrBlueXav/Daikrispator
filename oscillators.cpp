@@ -26,11 +26,14 @@
 
 #include "oscillators.h"
 
+using namespace daisy;
+using namespace daisysp;
+
 /*------------------------------------------------------------------------*/
 extern Drifter_t d1, d2, d3;
-extern VCO_blepsaw_t mbSawOsc;
-extern VCO_bleprect_t mbRectOsc;
-extern VCO_bleptri_t mbTriOsc;
+Oscillator mbSawOsc;
+Oscillator mbRectOsc;
+Oscillator mbTriOsc;
 
 /*------------------------------------------------------------------------*/
 Oscillator_t op1 _CCM_;
@@ -376,13 +379,15 @@ float waveCompute(uint8_t sound, float frq) {
 		break;
 
 	case BLEPTRIANGLE:
-		mbTriOsc.freq = frq;
-		y = VCO_bleptri_SampleCompute(&mbTriOsc);
+		mbTriOsc.SetFreq(frq);
+		//y = VCO_bleptri_SampleCompute(&mbTriOsc);
+		y = mbTriOsc.Process();
 		break;
 
 	case BLEPSQUARE:
-		mbRectOsc.freq = frq;
-		y = VCO_bleprect_SampleCompute(&mbRectOsc);
+		mbRectOsc.SetFreq(frq);
+		//y = VCO_bleprect_SampleCompute(&mbRectOsc);
+		y = mbRectOsc.Process();
 		break;
 
 	case WT_SINE:
@@ -445,8 +450,9 @@ float waveCompute(uint8_t sound, float frq) {
 		break;
 
 	case BLEPSAW: {
-		mbSawOsc.freq = frq;
-		y = VCO_blepsaw_SampleCompute(&mbSawOsc);
+		mbSawOsc.SetFreq(frq);
+		//y = VCO_blepsaw_SampleCompute(&mbSawOsc);
+		y = mbSawOsc.Process();
 	}
 		break;
 

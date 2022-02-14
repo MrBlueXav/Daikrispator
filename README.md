@@ -3,6 +3,8 @@ This is an adaptation of Dekrispator experimental autonomous music synthesizer.
 
 It runs on Electro-smith Daisy pod platform.
 
+The binary file Daikrispator.bin is included and ready to be flashed.
+
 The synth works on its own, sounds are perpetually changing.
 
 No USB Host midi but some controls.
@@ -20,7 +22,7 @@ Knob2 controls FX : first no fx then just delay then delay + phaser and finally 
  * monophonic
  * all digital !
  * sound generators :
-   * oscillators with very low aliased analog waveforms with superb minBLEP oscillators (thanks to Sean Bolton)
+   * oscillators with low aliased analog waveforms 
    * 4 operators FM generator
    * multisaw (several saws with individual "drifters")
    * 10 sine additive generator

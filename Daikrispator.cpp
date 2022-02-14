@@ -25,7 +25,7 @@
 #include "notesTables.h"
 #include "resonantFilter.h"
 #include "adsr.h"
-#include "blepvco.h"
+//#include "blepvco.h"
 #include "soundGen.h"
 
 //--------------------------------------------------------------------------
@@ -60,7 +60,9 @@ void Controls();
 
 //--------------------------------------------------------------------------
 
-static void AudioCallback(float *in, float *out, size_t size)
+static void AudioCallback(  AudioHandle::InterleavingInputBuffer  in,
+                            AudioHandle::InterleavingOutputBuffer out,
+                            size_t                                size)
 {
     Controls();
 
@@ -186,8 +188,8 @@ void UpdateButtons()
 
 void Controls()
 {
-    pod.UpdateAnalogControls();
-    pod.DebounceControls();
+    pod.ProcessAnalogControls();
+    pod.ProcessDigitalControls();
     UpdateEncoder();
     UpdateKnobs();
     UpdateButtons();

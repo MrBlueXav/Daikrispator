@@ -1,16 +1,17 @@
 # Project Name
 TARGET = Daikrispator
 
+# Optimisations
+OPT = -Os
+
 # Sources
 CPP_SOURCES = Daikrispator.cpp
 CPP_SOURCES += \
 adsr.cpp \
-blepvco.cpp \
 chorusFD.cpp \
 delay.cpp \
 drifter.cpp \
 math_tools.cpp \
-minblep_tables.cpp \
 notesTables.cpp \
 oscillators.cpp \
 phaser.cpp \
@@ -22,7 +23,7 @@ random.cpp \
 MIDI_application.cpp
 
 # Library Locations
-LIBDAISY_DIR = ../../libdaisy
+LIBDAISY_DIR = ../../libDaisy
 DAISYSP_DIR = ../../DaisySP
 
 # Core location, and generic makefile.

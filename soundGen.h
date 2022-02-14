@@ -38,7 +38,9 @@
 #include "notesTables.h"
 #include "resonantFilter.h"
 #include "adsr.h"
-#include "blepvco.h"
+//#include "blepvco.h"
+#include "daisy_pod.h"
+#include "daisysp.h"
 
 /* Exported functions ------------------------------------------------------- */
 
